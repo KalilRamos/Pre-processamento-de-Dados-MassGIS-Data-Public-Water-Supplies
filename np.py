@@ -1,27 +1,15 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
+# Dados de exemplo (substitua pelos seus dados reais)
+capacidade = np.random.normal(1000, 300, 100)  # Capacidade de produção de água em unidades
 
-print(dados[:5])
-print(dados.shape)
-print(dados.dtype)
-print(np.isnan(dados).sum())
-
-dados_sem_nan = np.nan_to_num(dados, nan=np.nanmean(dados, axis=0))
-
-def min_max_normalization(data):
-    min_val = np.min(data)
-    max_val = np.max(data)
-    normalized_data = (data - min_val) / (max_val - min_val)
-    return normalized_data
-
-dados_normalizados = min_max_normalization(dados)
-
-
-def z_score_normalization(data):
-    mean = np.mean(data)
-    std_dev = np.std(data)
-    normalized_data = (data - mean) / std_dev
-    return normalized_data
-
-dados_normalizados_z_score = z_score_normalization(dados)
+# Criar histograma da capacidade de produção de água
+plt.figure(figsize=(8, 6))
+plt.hist(capacidade, bins=20, color='skyblue', edgecolor='black')
+plt.title('Distribuição da Capacidade de Produção de Água')
+plt.xlabel('Capacidade de Produção (unidades)')
+plt.ylabel('Frequência')
+plt.grid(True)
+plt.show()
 
